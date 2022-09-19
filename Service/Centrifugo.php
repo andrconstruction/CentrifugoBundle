@@ -153,10 +153,17 @@ class Centrifugo implements CentrifugoInterface
             $this->centrifugoChecker->assertValidChannelName($channel);
         }
 
-        if ($command instanceof Model\BatchRequest) {
-            $json = $command->prepareLineDelimitedJson();
-        } else {
-            $json = \json_encode($command, \JSON_THROW_ON_ERROR);
+        if ( $command instanceof Model\BatchRequest ) {
+				$json = $command->prepareLineDelimitedJson();
+		}
+        else if ( $command instanceof Model\ChannelsCommand ) {
+            $json = \json_encode( $command, JSON_FORCE_OBJECT );
+        }
+        else if ( $command instanceof Model\InfoCommand ) {
+            $json = \json_encode( $command, JSON_FORCE_OBJECT );
+        }
+        else {
+            $json = \json_encode( $command, \JSON_THROW_ON_ERROR );
         }
 
         if ($this->profilerEnabled) {
