@@ -1,5 +1,6 @@
 {
     "name": "fresh/centrifugo-bundle",
+    "version": "2.4.1.1",
     "description": "Provides communication with web-socket server Centrifugo in Symfony applications.",
     "keywords": ["bundle", "symfony", "centrifugo", "web socket", "web-socket", "socket", "real time"],
     "homepage": "https://github.com/fre5h/CentrifugoBundle",
